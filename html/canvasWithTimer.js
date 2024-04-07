@@ -76,10 +76,7 @@ socket.on('accelerate', function(data){
   }
 
   arr  = data.array
-  console.log("ARR")
-  console.log(arr)
   for(let i = 0; i < arr.length; i++){
-    console.log(shootingQueue.elementAt(i).getColour())
     shootingQueue.elementAt(i).setLocation({x : arr[i].x, y : arr[i].y})
     shotStones.push(shootingQueue.elementAt(i))
   }
@@ -111,16 +108,12 @@ function stageStones(){
     }
   }
   notWait = true;
-
-  console.log("OG QUEUE")
-  console.log(shootingQueue)
 }
 
 //stageStones()
 
 
 
-//console.log(`stones: ${allStones.toString()}`)
 
 let setOfCollisions = new SetOfCollisions()
 

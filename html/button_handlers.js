@@ -3,7 +3,6 @@ socket.on('homeSet', function(message){
 })
 
 socket.on('homeReset', function(message){
-  console.log("UNLOADED")
   document.getElementById("JoinAsHomeButton").disabled = false
 })
 
@@ -12,41 +11,37 @@ socket.on('visitorSet', function(message){
 })
 
 socket.on('visitorReset', function(message){
-  console.log("UNLOADED")
   document.getElementById("JoinAsVisitorButton").disabled = false
 })
 
 function handleJoinAsHomeButton(){
   socket.emit('selected',"")
   home = true
-  console.log(`handleJoinAsHomeButton()`)
   let btn = document.getElementById("JoinAsHomeButton")
   btn.disabled = true //disable button
   btn.style.backgroundColor="lightgray"
   socket.emit('home', "")
-  if(!isHomePlayerAssigned){
-    isHomePlayerAssigned = true
-    isHomeClient = true
+  if(!homeplayerAssigned){
+    homeplayerAssigned = true
+    homeClient = true
   }
 }
 
 function handleJoinAsVisitorButton(){
   socket.emit('selected',"")
   away = true
-  console.log(`handleJoinAsVisitorButton()`)
   let btn = document.getElementById("JoinAsVisitorButton")
   btn.disabled = true //disable button
   btn.style.backgroundColor="lightgray"
   socket.emit('visitor', "")
-  if(!isVisitorPlayerAssigned) {
-    isVisitorPlayerAssigned = true
-    isVisitorClient = true
+  if(!visitorPlayerAssigned) {
+    visitorPlayerAssigned = true
+    visitorClient = true
   }
 }
 
 function handleJoinAsSpectatorButton(){
   socket.emit('selected',"")
-  console.log(`handleJoinAsSpectatorButton()`)
   let btn = document.getElementById("JoinAsSpectatorButton")
   btn.disabled = true //disable button
   btn.style.backgroundColor="lightgray"
