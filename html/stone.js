@@ -1,8 +1,4 @@
-/*
-(c) 2022 Louis D. Nel
-This class represents a round curling stone
 
-*/
 const OUTER_SHADOW_OFFSET = 2 //pixels
 const INNER_SHADOW_OFFSET = 1 //pixels
 

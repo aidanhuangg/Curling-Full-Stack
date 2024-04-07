@@ -1,12 +1,4 @@
-/*
-(c) 2022 Louis D. Nel
-This class represents a set of collisions between two Stones
-Duplicate collisions are not added
-Collisions are removed if the stones are no longer touching
-or both stones have stopped moving
-This class handles the redirecting the stones that collide using the
-handleCollision() method
-*/
+
 
 class SetOfCollisions {
   constructor() {

@@ -1,8 +1,3 @@
-/*
-  (c) 2022 Louis D. Nel
-  This class represents a
-  first-in last-out queue of elements
-*/
 
 let socket = io('http://' + window.document.location.host)
 

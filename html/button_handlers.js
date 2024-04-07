@@ -21,9 +21,9 @@ function handleJoinAsHomeButton(){
   btn.disabled = true //disable button
   btn.style.backgroundColor="lightgray"
   socket.emit('home', "")
-  if(!homeplayerAssigned){
-    homeplayerAssigned = true
-    homeClient = true
+  if(!isHomePlayerAssigned){
+    isHomePlayerAssigned = true
+    isHomeClient = true
   }
 }
 
@@ -34,9 +34,9 @@ function handleJoinAsVisitorButton(){
   btn.disabled = true //disable button
   btn.style.backgroundColor="lightgray"
   socket.emit('visitor', "")
-  if(!visitorPlayerAssigned) {
-    visitorPlayerAssigned = true
-    visitorClient = true
+  if(!isVisitorPlayerAssigned) {
+    isVisitorPlayerAssigned = true
+    isVisitorClient = true
   }
 }
 
@@ -45,5 +45,7 @@ function handleJoinAsSpectatorButton(){
   let btn = document.getElementById("JoinAsSpectatorButton")
   btn.disabled = true //disable button
   btn.style.backgroundColor="lightgray"
-  if(!isSpectatorClient) isSpectatorClient = true
+  if(!isSpectatorClient) {
+    isSpectatorClient = true
+  }
 }

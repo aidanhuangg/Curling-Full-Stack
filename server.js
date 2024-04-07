@@ -1,24 +1,8 @@
-/*
-COMP 2406 Collision Demo
-(c) Louis D. Nel 2018
-
-This example is based on the collision geometry math presented in
-assignment #3 (fall 2018).
-Some of the variable names (e.g. angle_d) correspond to those
-presented in the powerpoint slides with the assignment.
-
-This code is intended to serve as the base code for building
-an online multi-player game where clients are kept in synch
-through a server -presumably using the socket.io npm module.
-
-
-Use browser to view pages at http://localhost:3000/collisions.html
-*/
 
 //Server Code
-const server = require("http").createServer(handler) //need to http
-const io = require('socket.io')(server) //wrap server app in socket io capability
-const fs = require("fs") //needed if you want to read and write files
+const server = require("http").createServer(handler) 
+const io = require('socket.io')(server) 
+const fs = require("fs") 
 const { SocketAddress } = require("net")
 const url = require("url") //to parse url strings
 
@@ -111,7 +95,7 @@ function handler(request, response) {
     })
 }
 
-//cue vector object
+//cue vector
 let cue = {
   cueTipX : 0,
   cueTipY : 0,
@@ -135,7 +119,6 @@ io.on('connection', function(socket) {
   
   socket.on("selected", function(data){
     if(room.indexOf(socket.id) == -1){
-      console.log("NEW SOCKET")
       let dat = JSON.stringify({turn : whosStarted, array : cueArr})
       io.to(socket.id).emit('accelerate', dat)
       socket.join("in")
@@ -148,14 +131,10 @@ io.on('connection', function(socket) {
     if(cueArr.length >= 8){
       cueArr = []
     }
-    console.log("pushed: " + data)
-    console.log("CUEARR: "+cueArr)
-    console.log("LENGTH: "+cueArr.length)
   })
 
   socket.on('turn', function(data){
     whosStarted = JSON.parse(data).turn
-    console.log("turn: "+whosStarted)
   })  
   socket.on('home', function(data){
     obj[socket.id+'h'] = 'home'
@@ -166,21 +145,18 @@ io.on('connection', function(socket) {
     io.emit('visitorSet')
   })
   socket.on('cueStart_s', function(data){
-    console.log(data)
     pData = JSON.parse(data)
     cue.cueTipX = pData.x
     cue.cueTipY = pData.y
     socket.broadcast.to("in").emit("cueStart",data)
   })
   socket.on('updateCue_s', function(data){
-    console.log(data)
     pData = JSON.parse(data)
     cue.cueEndX = pData.x
     cue.cueEndY = pData.y
     socket.broadcast.to("in").emit("updateCue",data)
   })
   socket.on('cueEnd_s', function(data){
-    console.log(data)
     cueArr.push(cue)
     cue = {
       cueTipX : 0,
@@ -191,16 +167,12 @@ io.on('connection', function(socket) {
     socket.broadcast.to("in").emit("cueEnd",data)
   })
   socket.on("disconnect", function() {
-    console.log("home Obj[id] = "+obj[socket.id+'h'])
-    console.log("visit Obj[id] = "+obj[socket.id+'v'])
 
     if(obj[socket.id+'v'] == 'visitor'){
-      console.log("VISITOR CONF")
       io.emit('visitorReset', "")
       delete obj[socket.id+'v']
     }
     if(obj[socket.id+'h'] == 'home'){
-      console.log("HOME CONF")
       io.emit('homeReset', "")
       delete obj[socket.id+'h']
     }

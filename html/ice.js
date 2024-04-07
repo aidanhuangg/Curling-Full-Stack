@@ -1,13 +1,3 @@
-/*
-(c) 2022 Louis D. Nel
-This class represents ice surface with the shooting and close up areas
-
-Refactoring: TODO:
-Currently the simpulation uses a global co-ordinate system that includes
-both the shooting area and the close-up area. This should be refactored to
-provide each area with its own local co-ordinate system.
-
-*/
 
 const SHOOTING_AREA_FRACTION = 25/100 //fraction of canvas width taken up by shooting area
 const SCORE_FONT_POINT_SIZE = 80 //point size for chord and lyric text

@@ -1,7 +1,6 @@
 
 /*
 Client-side javascript for 2406 collision geometry demo
-(c) Louis D. Nel 2022
 
 This demonstration provides a client-side only application. In this
 demonstration the server is used only to serve the application to the client.
@@ -87,9 +86,6 @@ socket.on('accelerate', function(data){
 
 
 function stageStones(){
-  //stage the stones in the shooting area by lining them vertically on either side
-  //add stones to the shooting order queue based on the value
-  //of whosTurnIsIt state variable
 
   if(whosTurnIsIt === HOME_COLOUR){
     for(let i=0; i<STONES_PER_TEAM; i++){
@@ -109,10 +105,6 @@ function stageStones(){
   }
   notWait = true;
 }
-
-//stageStones()
-
-
 
 
 let setOfCollisions = new SetOfCollisions()

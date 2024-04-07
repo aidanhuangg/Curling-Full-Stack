@@ -1,7 +1,3 @@
-/*
-  (c) 2022 Louis D. Nel
-  This class represents a collection of curling stone object
-*/
 
 class SetOfStones {
   //let collection = []  //NOT ALLOWED WITH CLASSES
