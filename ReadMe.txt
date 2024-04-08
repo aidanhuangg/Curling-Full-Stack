@@ -16,3 +16,4 @@ TESTING INSTRUCTIONS:
 When the server is running, visit http://localhost:3000/curling.html
 
 VIDEO DEMONSTRATION:
+https://youtu.be/l0kyjl-14BU
