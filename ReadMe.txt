@@ -1,5 +1,3 @@
-I attest to be begin the sole author of this summitted work and any code borrowed from other sources has been identified by comments placed in my submitted code.
-Aidan Huang, 101302308
 
 INSTALL INSTRUCTIONS:
 Ensure that NPM and NodeJS are installed.
